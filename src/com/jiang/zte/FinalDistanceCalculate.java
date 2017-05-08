@@ -22,13 +22,29 @@ public class FinalDistanceCalculate {
 		In in = new In(file);
 		 G = new MyEdgeWeightedDigraph(in);
 		
+		 /*
 		//先测试第一种方式hotpotList[0]
 		int[] first = hotpotList.get(0);
 		//最终的距离
 		int endDistance=0;
 		endDistance=findDistance(first);
 		System.out.println("长度是："+endDistance);
-		
+		*/
+		 //需要对链表的数组都计算，得到路径最短的一条线路
+		 MinArray myMinArray=new MinArray();
+		 for(int i=0;i<hotpotList.size();i++){
+			 int[] tempArray=hotpotList.get(i);
+			 int temp=findDistance(tempArray);
+			 if(temp<myMinArray.distance)
+			 {
+				 myMinArray.distance=temp;
+				 myMinArray.index=i;
+			 }			 
+			 
+		 }
+		 
+		 System.out.println("最短路径的长度是："
+				 +myMinArray.distance+"，在list的第 "+myMinArray.index+"个数组中");
 		
 	}
 	
